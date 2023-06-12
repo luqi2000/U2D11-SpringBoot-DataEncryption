@@ -51,8 +51,11 @@ public class AuthController {
 	@PostMapping("/login")
 	public ResponseEntity<AuthenticationSuccessfullPayload> login(@RequestBody UserLoginPayload body) {
 				User user = userService.findByEmail(body.getEmail());
-				if (!body.getPassword().matches(user.getPassword()))
-					throw new UnauthorizedException("Credentials not valid");
+//				if (!body.getPassword().matches(user.getPassword()))
+//					throw new UnauthorizedException("Credentials not valid");
+				
+				if(!bcrypt.matches(body.getPassword(), user.getPassword())) 
+					throw new UnauthorizedException("Credentials not valid"); //matches will return a boolean 
 				String token = JWTTools.createToken(user);
 				return new ResponseEntity<>(new AuthenticationSuccessfullPayload(token), HttpStatus.OK);
 	}
