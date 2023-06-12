@@ -21,7 +21,7 @@ public class UserService {
 	private UserRepository userRepo;
 	
 	// 1. create user
-	public User create(User u) {
+	public User create(UserRegistrationPayload u) {
 		userRepo.findByEmail(u.getEmail()).ifPresent(user -> {
 			throw new BadRequestException("email already register");
 		});
@@ -50,7 +50,7 @@ public class UserService {
 
 	
 	// 4. find by id and update
-	public User findByIdAndUpdate(UUID id, User body) throws NotFoundException {
+	public User findByIdAndUpdate(UUID id, UserRegistrationPayload body) throws NotFoundException {
 		User found = this.findById(id);
 
 		found.setId(id);

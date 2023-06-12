@@ -39,7 +39,7 @@ public class UserController {
 	//working
 	@PostMapping("")
 	@ResponseStatus(HttpStatus.CREATED)
-	public User saveUser(@RequestBody User body){
+	public User saveUser(@RequestBody @Validated UserRegistrationPayload body){
 		return userService.create(body);
 	}
 	
@@ -60,7 +60,7 @@ public class UserController {
 	
 	//working
 	@PutMapping("/{userId}")
-	public User updateUser(@PathVariable UUID userId, @RequestBody @Validated User body) throws Exception {
+	public User updateUser(@PathVariable UUID userId, @RequestBody @Validated UserRegistrationPayload body) throws Exception {
 		return userService.findByIdAndUpdate(userId, body);
 	}
 	
