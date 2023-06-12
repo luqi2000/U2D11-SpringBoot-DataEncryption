@@ -9,6 +9,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -31,16 +34,21 @@ public class User implements UserDetails{
 	private String surname;
 	private String email;
 	private String password;
+	
+	@Convert(converter = CreditCardConverter.class)
+	private String creditCard;
+	
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
-	public User(String username, String name, String surname, String email, String password) {
+	public User(String username, String name, String surname, String email, String password, String creditCard) {
 		super();
 		this.username = username;
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.password = password;
+		this.creditCard = creditCard;
 		this.role = Role.USER; //this mean that when you create a User this will be a normal user and not an Admin
 	}
 

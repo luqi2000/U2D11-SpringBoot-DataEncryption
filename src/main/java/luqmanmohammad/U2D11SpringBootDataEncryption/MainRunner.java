@@ -30,7 +30,8 @@ public class MainRunner implements CommandLineRunner{
 				String surname = faker.name().lastName();
 				String email = faker.internet().emailAddress();
 				String password  = faker.code().asin();
-				User user = new User(username, name, surname, email, password);
+				String creditCard = faker.finance().creditCard();
+				User user = new User(username, name, surname, email, password, creditCard);
 				//userService.create(user);
 			
 			} catch (Exception e) {

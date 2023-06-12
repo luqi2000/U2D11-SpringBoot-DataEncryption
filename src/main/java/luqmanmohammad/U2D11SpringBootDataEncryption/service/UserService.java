@@ -27,7 +27,7 @@ public class UserService {
 		});
 		
 		//this is what back-end will create from front end 
-		User newUser = new User(u.getUsername(), u.getName(), u.getSurname(),u.getEmail(), u.getPassword());
+		User newUser = new User(u.getUsername(), u.getName(), u.getSurname(),u.getEmail(), u.getPassword(), u.getCreditCard());
 		return userRepo.save(newUser);
 	}
 	// 2. search all users

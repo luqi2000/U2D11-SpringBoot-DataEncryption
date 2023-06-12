@@ -24,4 +24,6 @@ public class UserRegistrationPayload {
 	@NotNull(message = "password required")
 	@Size(min = 10, max = 30, message = "password not valid. Min 10 characters and max 30 characters")
 	String password;
+	
+	String creditCard;
 }
