@@ -25,6 +25,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "employee")
 @Data
 @NoArgsConstructor
+@JsonIgnoreProperties({"password"})
 public class User implements UserDetails{
 	@Id
 	@GeneratedValue

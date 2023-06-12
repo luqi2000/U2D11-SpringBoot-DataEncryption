@@ -11,8 +11,6 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.springframework.stereotype.Component;
-
 import jakarta.persistence.AttributeConverter;
 public class CreditCardConverter implements AttributeConverter<String, String> {
 	private static final String ALGORITHM = "AES/ECB/PKCS5Padding"; //name of algorithm used
